@@ -32,6 +32,38 @@ def efficientBubbleSort(array):
     
     return array
 
+def MERGE(list1, list2):
+    mergedList = []
+    size1 = len(list1)
+    size2 = len(list2)
+    index1,index2=0,0    
+    lastAdded= None
+
+    while(index1<size1 and index2<size2):
+        if(list1[index1] <= list2[index2]):
+            if(list1[index1] != lastAdded):
+                mergedList.append(list1[index1])
+                lastAdded = list1[index1]
+            index1+=1
+        else:
+            if(list2[index2]!= lastAdded):
+                mergedList.append(list2[index2])
+                lastAdded = list2[index2]
+            index2+=1
+    
+    while index1< size1:
+         if(list1[index1] != lastAdded):
+                mergedList.append(list1[index1])
+                lastAdded = list1[index1]
+         index1+=1
+
+    while index1< size1:
+        if(list2[index2] != lastAdded):
+                mergedList.append(list2[index2])
+                lastAdded = list2[index2]
+        index2+=1
+    return mergedList
+
 def main():
     list1 = get_array_input("list1")
     list2 = get_array_input("list2")
@@ -44,6 +76,9 @@ def main():
 
     sorted_list2 = insertion_sort(list2)
     print(f"Sorted elements of List1 by Efficient Bubble sort are: {sorted_list2}")
+
+    sorted_list3 = MERGE(sorted_list1, sorted_list2)
+    print(f"Sorted elements of List1 and List2 by MERGE sort are: {sorted_list3}")
 
 if __name__ == "__main__":
     main()

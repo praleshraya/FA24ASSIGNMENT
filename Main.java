@@ -47,28 +47,52 @@ public class Main {
     {
         List<Integer> mergedList = new ArrayList<>();
         int index1 =0; int index2=0;
+        Integer lastAdded= null;
+        int size1 = list1.size();
+        int size2 = list2.size();
+        
         //comparing values
-        while (index1<list1.size() && index2< list2.size()) {
-            if (list1.get(index1)<=list2.get(index2)) {
+        while (index1 < size1 && index2 < size2) {
+            if (list1.get(index1) <= list2.get(index2)) {
+                if(!list1.get(index1).equals(lastAdded))
+                {
                 mergedList.add(list1.get(index1));
-                index1++;
+                lastAdded = list1.get(index1);
+                
+                }
+                index1+=1;
             }
-            else{
-                mergedList.add(list2.get(index2));
-                index2++;
+            else{           
+                    if(!list2.get(index2).equals(lastAdded))
+                    {
+                    mergedList.add(list2.get(index2));
+                    lastAdded = list2.get(index2);
+                    
+                    }
+                    index2+=1;
             }
         }
-        while (index1 < list1.size()) {
-            mergedList.add(list1.get(index1));
-            index1++;
-        }
-        while (index2 < list2.size()) {
-            mergedList.add(list2.get(index2));
-            index2++;
-        }
+        while (index1 < size1) 
+        {  
+        if (list1.get(index1) <= list1.get(index1)) {
 
-        return mergedList;    
+            mergedList.add(list1.get(index1));
+            lastAdded=list1.get(index1);
+        }
+        index2+=1;
     }
+        while (index2 < size2) {
+            if (list2.get(index2) <= list2.get(index2)) {
+
+            mergedList.add(list2.get(index2));
+            lastAdded=list2.get(index2);
+         
+        }
+        index2++;
+    }           
+    
+    return mergedList;
+}
 
 
     public static List<Integer> getIntegerList(String listName){
@@ -96,6 +120,7 @@ public class Main {
                 }
             }
         }
+        
        
     }
     public static void main(String[] args)
@@ -113,8 +138,8 @@ public class Main {
         List<Integer> sortedList2= efficientBubbleSort(list2);
         System.out.println("Sorted elements in list1 by Efficient Bubble Sort are :" + sortedList2);
 
-        List<Integer> sorteMedList3= MERGE(list1,list2);
-        System.out.println("Sorted elements in list1 and list2 by MERGE Sort are :" + sorteMedList3);
+        List<Integer> sortedList3= MERGE(sortedList1, sortedList2);
+        System.out.println("Sorted elements in list1 and list2 by MERGE Sort are :" + sortedList3);
 
     }
 }
