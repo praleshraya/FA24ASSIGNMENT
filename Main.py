@@ -6,9 +6,10 @@ def get_array_input(array_name):
             if(len(integers)>MAX_SIZE):
                 print(f" Error : You have entered more than {MAX_SIZE} integers. Please enter upto size {MAX_SIZE}. ")
             else:
-                return integers
+              return integers
         except Exception as e:
-            print("Error: Invalid input. Please enter only integers.")
+           print("Error: Invalid input. Please enter only integers.")
+           
 
 def insertion_sort(array):
     for i in range(1, len(array)):
@@ -18,7 +19,7 @@ def insertion_sort(array):
             array[j + 1] = array[j]
             j -= 1
         array[j + 1] = pivot
-    return array
+    return array        
 
 def efficientBubbleSort(array):
     size=len(array)
@@ -64,6 +65,24 @@ def MERGE(list1, list2):
         index2+=1
     return mergedList
 
+def binarySearch(array, target):
+    low =0
+    high=len(array)-1
+    while low <= high:
+
+        mid = low + (high - low)//2
+
+        if target == array[mid]:
+            return mid
+
+        elif target > array[mid]:
+            low = mid + 1
+
+        else:
+            high = mid - 1
+
+    return -1
+    
 def main():
     list1 = get_array_input("list1")
     list2 = get_array_input("list2")
@@ -79,6 +98,23 @@ def main():
 
     sorted_list3 = MERGE(sorted_list1, sorted_list2)
     print(f"Sorted elements of List1 and List2 by MERGE sort are: {sorted_list3}")
+
+    while(True):
+     target = input("Enter to search element in merged array:")
+     if target.isnumeric():
+        target_index = binarySearch(sorted_list3,int(target))
+        if target_index != -1 :
+            print(f" Target element is found at index: {target_index}")
+        else:
+            print(f" Target element is not found.")
+        break
+     else:
+        print(f"Error: Target should be integer.")
+        
+
+
+
+    
 
 if __name__ == "__main__":
     main()

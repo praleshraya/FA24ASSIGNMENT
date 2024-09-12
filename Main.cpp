@@ -119,13 +119,19 @@ vector<int> MERGE(const vector<int> &list1, const vector<int> &list2) {
 
     // Add remaining elements from list1
     while (index1 < size1) {
+          if (list1[index1] != lastAdded) {
         mergedList.push_back(list1[index1]);
+          lastAdded= list1[index1];
+          }
         index1++;
     }
 
     // Add remaining elements from list2
     while (index2 < size2) {
+          if (list2[index2] != lastAdded) {
         mergedList.push_back(list2[index2]);
+          lastAdded=list2[index2];
+          }
         index2++;
     }
 
@@ -133,6 +139,30 @@ vector<int> MERGE(const vector<int> &list1, const vector<int> &list2) {
 
 
 }
+
+int binarySearch(vector<int> array, int target)
+{
+    int left =0;
+    int right =array.size()-1;
+    while (left <= right)
+    {
+        int mid = left + (right-left)/2;
+        if(array[mid]==target)
+        {
+            return mid;
+        }
+        else if(target> array[mid])
+        {
+            left =mid+1;
+        }
+        else{
+            right = mid-1;
+        }
+
+    }
+    return -1;
+}
+
 
 int main(){
     vector<int> list1 = get_array_input("list1");
@@ -175,6 +205,30 @@ int main(){
         cout << num << " ";
     }
     cout << endl;
+
+
+  while (true)
+{
+    int target, target_index;
+    cout << "Enter an integer to search in the merged array:" << endl;
+    cin >> target;
+
+
+    target_index = binarySearch(sortedList3, target);
+    if (target_index != -1)
+    {
+        cout << "Target element is found at index: " << target_index << endl;
+    }
+    else
+    {
+        cout << "Target element is not found." << endl;
+    }
+    break;
+}
+
+
+
+
 
     return 0;
 }

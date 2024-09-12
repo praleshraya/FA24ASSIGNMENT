@@ -123,6 +123,30 @@ public class Main {
         
        
     }
+
+     public static int binarySearch(List<Integer> array, int target)
+    {
+        int low=0;
+        int high = array.size()-1;
+        
+
+        while (low<=high) {
+            int mid =low+(high-low)/2;
+            if(target==array.get(mid))
+            {
+                return mid;
+            }
+            else if(target>array.get(mid))
+            {
+                low= mid+1;
+            }
+            else {
+                high = mid-1;
+            }
+        }
+
+            return -1;
+    }
     public static void main(String[] args)
     {
 
@@ -140,6 +164,23 @@ public class Main {
 
         List<Integer> sortedList3= MERGE(sortedList1, sortedList2);
         System.out.println("Sorted elements in list1 and list2 by MERGE Sort are :" + sortedList3);
+
+        Scanner sc= new Scanner(System.in);
+
+        while (true) {
+        System.out.println("Enter to search element in merged array:");
+        int target = sc.nextInt();
+        int target_index = binarySearch(sortedList3, target);
+        if(target_index == -1)
+        {
+            System.out.println("Target element not found in merged array.");
+        }
+        else{
+            System.out.println("Target element is found at index "+target_index+" .");
+        }
+
+        }
+        
 
     }
 }
