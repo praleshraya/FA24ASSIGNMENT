@@ -1,3 +1,14 @@
+/*
+Name : PRALESH RAYAMAJHI
+ Course : CSC 710 Structure and Design Programming Langauge
+ Assignment : 1 
+ Question : 1
+ Due Date 20 Sept, 2024
+ Application : C++
+ Task : Sort(bubble and insertion) and Merge(MergeSort) array A and B and search target element by using binary searh.
+
+*/
+// here we are using vector type of array so that it can be dynamic and memory efficienent so that program runs smoothly.
 #include<iostream>
 #include<sstream>
 #include<vector>
@@ -75,6 +86,8 @@ vector<int> insertionSort(vector<int> array) {
     return array;
 }
 
+// here we are definiing a function using bubble sort
+
 vector<int> efficientBubbleSort(vector<int> array)
 {
     int n= array.size();
@@ -84,7 +97,7 @@ vector<int> efficientBubbleSort(vector<int> array)
         {
             if(array[j]>array[j+1])
             {
-                int temp= array[j];
+                int temp= array[j];   //to hold temporaray data
                 array[j]=array[j+1];
                 array[j+1]= temp;
             }
@@ -94,6 +107,8 @@ vector<int> efficientBubbleSort(vector<int> array)
 
 }
 
+// here we are now merging those two list or array
+
 vector<int> MERGE(const vector<int> &list1, const vector<int> &list2) {
     vector<int> mergedList;
     int size1 = list1.size();
@@ -101,6 +116,7 @@ vector<int> MERGE(const vector<int> &list1, const vector<int> &list2) {
     int index1 = 0, index2 = 0;
     int lastAdded = INT_MIN;
 
+    //until size of left index is smaller than right loop continues.
      while (index1 < size1 && index2 < size2) {
         if (list1[index1] <= list2[index2]) {
             if (list1[index1] != lastAdded) {
@@ -139,7 +155,7 @@ vector<int> MERGE(const vector<int> &list1, const vector<int> &list2) {
 
 
 }
-
+ // here we are implementing binary search algorithm.
 int binarySearch(vector<int> array, int target)
 {
     int left =0;
@@ -163,10 +179,13 @@ int binarySearch(vector<int> array, int target)
     return -1;
 }
 
+// starting point of a program.
 
 int main(){
     vector<int> list1 = get_array_input("list1");
     vector<int> list2 = get_array_input("list2");
+
+    //displaying input from user.
 
     cout << "Elements in list1 are : ";
     for(int num: list1)
@@ -232,3 +251,6 @@ int main(){
 
     return 0;
 }
+
+
+

@@ -1,3 +1,12 @@
+
+# Name : PRALESH RAYAMAJHI
+# Course : CSC 710 Structure and Design Programming Langauge
+# Assignment : 1 
+# Question : 1
+# Due Date 20 Sept, 2024
+# Application : Python
+# Task : Sort(bubble and insertion) and Merge(MergeSort) array A and B and search target element by using binary searh.
+
 def get_array_input(array_name):
     MAX_SIZE = 30
     while(True):
